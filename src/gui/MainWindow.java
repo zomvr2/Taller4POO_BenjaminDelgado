@@ -7,6 +7,9 @@ public class MainWindow extends JFrame {
         setTitle("TCG Manager");
         setSize(1000, 600);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setVisible(true);
+
+        CollectionPanel collectionPanel = new CollectionPanel();
+
+        add(collectionPanel);
     }
 }
