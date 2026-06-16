@@ -1,3 +1,5 @@
+package domain;
+
 public abstract class Carta {
     private String nombre;
     private int rareza;
