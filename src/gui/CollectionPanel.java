@@ -1,13 +1,31 @@
 package gui;
 
 import javax.swing.*;
+
+import domain.Carta;
 import logic.Sistema;
 import logic.SistemaImpl;
+
+import java.awt.*;
+import java.util.ArrayList;
 
 public class CollectionPanel extends JPanel {
     private Sistema sistema;
     public CollectionPanel() {
         sistema = SistemaImpl.getInstance();
-        setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
+        setLayout(new GridLayout(0, 4, 10, 10));
+
+        ArrayList<Carta> cartas = sistema.getCartas();
+
+        for (Carta carta : cartas) {
+            ImageIcon card = new ImageIcon(carta.getRutaImagen());
+            Image image = card.getImage();
+            Image scaledImage = image.getScaledInstance(120, 165, Image.SCALE_SMOOTH);
+
+            JLabel label = new JLabel(new ImageIcon(scaledImage));
+
+
+            add(label);
+        }
     }
 }
