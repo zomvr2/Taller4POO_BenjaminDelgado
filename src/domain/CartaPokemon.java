@@ -1,5 +1,7 @@
 package domain;
 
+import patrones.CartaVisitor;
+
 public class CartaPokemon extends Carta {
     private int dano;
     private int cantEnergias;
@@ -8,5 +10,18 @@ public class CartaPokemon extends Carta {
         super(nombre, rareza);
         this.dano = dano;
         this.cantEnergias = cantEnergias;
+    }
+
+    public int getCantEnergias() {
+        return cantEnergias;
+    }
+
+    public int getDano() {
+        return dano;
+    }
+
+    @Override
+    public double aceptar(CartaVisitor visitor) {
+        return visitor.visitar(this);
     }
 }

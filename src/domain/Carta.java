@@ -1,5 +1,7 @@
 package domain;
 
+import patrones.CartaVisitor;
+
 public abstract class Carta {
     private String nombre;
     private int rareza;
@@ -35,4 +37,6 @@ public abstract class Carta {
     public void setRutaImagen(String rutaImagen) {
         this.rutaImagen = rutaImagen;
     }
+
+    public abstract double aceptar(CartaVisitor visitor);
 }
