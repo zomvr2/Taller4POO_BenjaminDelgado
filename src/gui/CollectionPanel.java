@@ -2,34 +2,28 @@ package gui;
 
 import javax.swing.*;
 
-import domain.Carta;
 import logic.Sistema;
-import logic.SistemaImpl;
-
-import java.awt.*;
-import java.util.ArrayList;
+import patrones.SortStrategy;
 
 public class CollectionPanel extends JPanel {
-    private Sistema sistema;
-    public CollectionPanel() {
-        sistema = SistemaImpl.getInstance();
-        setLayout(new GridLayout(0, 4, 10, 10));
+    public CollectionPanel(Sistema sistema) {
+        setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
 
-        ArrayList<Carta> cartas = sistema.getCartas();
+        SortStrategy sortBy;
 
-        for (Carta carta : cartas) {
-            ImageIcon cardIcon = new ImageIcon(carta.getRutaImagen());
-            Image cardImage = cardIcon.getImage();
-            Image scaledCardImage = cardImage.getScaledInstance(120, 165, Image.SCALE_SMOOTH);
+        String[] opciones = {
+                "Ordenar por rareza",
+                "Ordenar por nombre",
+                "Ordenar por poder" };
 
-            JButton card = new JButton(new ImageIcon(scaledCardImage));
+        JComboBox<String> sortOptions = new JComboBox<>(opciones);
+        CardGrid cardGrid = new CardGrid(sistema);
 
-            card.addActionListener(e -> {
-                CardDetailsWindow cardDetailsWindow = new CardDetailsWindow(carta);
-                cardDetailsWindow.setVisible(true);
-            });
+        sortOptions.addActionListener(e -> {
+            String selected = (String) sortOptions.getSelectedItem();
+        });
 
-            add(card);
-        }
+        add(sortOptions);
+        add(cardGrid);
     }
 }
