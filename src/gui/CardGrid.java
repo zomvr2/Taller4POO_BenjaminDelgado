@@ -1,17 +1,22 @@
 package gui;
 
 import domain.Carta;
-import logic.Sistema;
 
 import javax.swing.*;
 import java.awt.*;
 import java.util.ArrayList;
 
 public class CardGrid extends JPanel {
-    public CardGrid(Sistema sistema) {
-        setLayout(new GridLayout(0, 4, 10, 10));
+    private final ArrayList<Carta> cartas;
 
-        ArrayList<Carta> cartas = sistema.getCartas();
+    public CardGrid(ArrayList<Carta> cartas) {
+        this.cartas = cartas;
+        setLayout(new GridLayout(0, 4, 10, 10));
+        refreshCards();
+    }
+
+    public void refreshCards() {
+        removeAll();
 
         for (Carta carta : cartas) {
             ImageIcon cardIcon = new ImageIcon(carta.getRutaImagen());
@@ -27,5 +32,8 @@ public class CardGrid extends JPanel {
 
             add(card);
         }
+
+        revalidate();
+        repaint();
     }
 }
