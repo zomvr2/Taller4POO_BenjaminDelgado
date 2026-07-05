@@ -9,7 +9,7 @@ public class CartaPokemon extends Carta {
     public CartaPokemon(String nombre, int rareza, int dano, int cantEnergias) {
         super(nombre, rareza, "Pokemon");
         this.dano = dano;
-        this.cantEnergias = cantEnergias;
+        setCantEnergias(cantEnergias);
     }
 
     public int getCantEnergias() {
@@ -17,6 +17,9 @@ public class CartaPokemon extends Carta {
     }
 
     public void setCantEnergias(int cantEnergias) {
+        if (cantEnergias <= 0) {
+            throw new IllegalArgumentException("La cantidad de energias debe ser mayor que cero.");
+        }
         this.cantEnergias = cantEnergias;
     }
 

@@ -18,6 +18,9 @@ public class PowerCalcVisitor implements CartaVisitor {
 
     @Override
     public double visitar(CartaPokemon carta) {
+        if (carta.getCantEnergias() <= 0) {
+            return 0;
+        }
         return ((double) carta.getDano() / carta.getCantEnergias()) * 100;
     }
 
