@@ -14,6 +14,10 @@ public class CartaSupporter extends Carta {
         return efectosPorTurno;
     }
 
+    public void setEfectosPorTurno(int efectosPorTurno) {
+        this.efectosPorTurno = efectosPorTurno;
+    }
+
     @Override
     public double aceptar(CartaVisitor visitor) {
         return visitor.visitar(this);

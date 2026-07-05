@@ -14,6 +14,10 @@ public class CartaItem extends Carta {
         return bonificacion;
     }
 
+    public void setBonificacion(int bonificacion) {
+        this.bonificacion = bonificacion;
+    }
+
     @Override
     public double aceptar(CartaVisitor visitor) {
         return visitor.visitar(this);

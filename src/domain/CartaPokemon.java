@@ -16,8 +16,16 @@ public class CartaPokemon extends Carta {
         return cantEnergias;
     }
 
+    public void setCantEnergias(int cantEnergias) {
+        this.cantEnergias = cantEnergias;
+    }
+
     public int getDano() {
         return dano;
+    }
+
+    public void setDano(int dano) {
+        this.dano = dano;
     }
 
     @Override
