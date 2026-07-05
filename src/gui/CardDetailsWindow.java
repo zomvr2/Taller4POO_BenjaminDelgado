@@ -10,9 +10,19 @@ import javax.swing.*;
 import java.awt.*;
 import java.io.File;
 
+/**
+ * Ventana que muestra la vista ampliada de una carta.
+ *
+ * Incluye imagen, datos base y atributos especificos segun el tipo de carta.
+ */
 public class CardDetailsWindow extends JFrame {
     private static final String DEFAULT_IMAGE_PATH = "src/files/imagenes/Default.png";
 
+    /**
+     * Crea una ventana de detalle para la carta indicada.
+     *
+     * @param carta carta cuyos datos se mostraran
+     */
     public CardDetailsWindow(Carta carta) {
         setTitle("Detalles de " + carta.getNombre());
         setSize(480, 300);

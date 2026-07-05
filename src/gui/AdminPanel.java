@@ -12,6 +12,12 @@ import javax.swing.table.DefaultTableModel;
 import java.awt.*;
 import java.util.ArrayList;
 
+/**
+ * Panel de administracion para agregar, modificar y eliminar cartas.
+ * <p>
+ * Muestra la coleccion en una tabla y comunica cada operacion al sistema para
+ * mantener la persistencia actualizada.
+ */
 public class AdminPanel extends JPanel {
     private static final String TIPO_POKEMON = "Pokemon";
     private static final String TIPO_ITEM = "Item";
@@ -22,6 +28,11 @@ public class AdminPanel extends JPanel {
     private final DefaultTableModel modelo;
     private final JTable tabla;
 
+    /**
+     * Crea el panel de administracion.
+     *
+     * @param sistema sistema que administra la coleccion de cartas
+     */
     public AdminPanel(Sistema sistema) {
         this.sistema = sistema;
         setLayout(new BorderLayout(10, 10));

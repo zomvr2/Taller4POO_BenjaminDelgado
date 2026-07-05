@@ -2,7 +2,16 @@ package patrones;
 
 import domain.*;
 
+/**
+ * Fabrica responsable de convertir lineas de texto en instancias de cartas.
+ */
 public class CartaFactory {
+    /**
+     * Crea una carta desde una linea con formato {@code Nombre;Rareza;Tipo;...}.
+     *
+     * @param linea linea leida desde el archivo de cartas
+     * @return carta creada segun su tipo, o {@code null} si el tipo no existe
+     */
     public static Carta crearCarta(String linea) {
         String[] partes = linea.split(";");
 

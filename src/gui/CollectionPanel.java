@@ -11,7 +11,15 @@ import patrones.SortStrategy;
 
 import java.util.ArrayList;
 
+/**
+ * Panel de coleccion que muestra las cartas y permite ordenarlas.
+ */
 public class CollectionPanel extends JPanel {
+    /**
+     * Crea el panel de coleccion con controles de ordenamiento.
+     *
+     * @param sistema sistema que entrega las cartas cargadas
+     */
     public CollectionPanel(Sistema sistema) {
         ArrayList<Carta> cartas = sistema.getCartas();
         setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));

@@ -11,6 +11,12 @@ import domain.CartaPokemon;
 import domain.CartaSupporter;
 import patrones.CartaFactory;
 
+/**
+ * Implementacion principal del sistema de cartas.
+ *
+ * Mantiene las cartas en memoria, las carga desde archivo y guarda cada cambio
+ * usando el mismo formato de texto del repositorio.
+ */
 public class SistemaImpl implements Sistema {
     private static final String RUTA_ARCHIVO = "src/files/sobres.txt";
     private static SistemaImpl instancia;
@@ -21,6 +27,11 @@ public class SistemaImpl implements Sistema {
         cargarCartas();
     }
 
+    /**
+     * Obtiene la unica instancia del sistema.
+     *
+     * @return instancia compartida de {@code SistemaImpl}
+     */
     public static SistemaImpl getInstance() {
         if (instancia == null) {
             instancia = new SistemaImpl();
@@ -28,6 +39,10 @@ public class SistemaImpl implements Sistema {
         return instancia;
     }
 
+    /**
+     * Carga las cartas desde el archivo de sobres y reemplaza la coleccion en
+     * memoria.
+     */
     @Override
     public void cargarCartas() {
         cartas.clear();
@@ -52,11 +67,22 @@ public class SistemaImpl implements Sistema {
         }
     }
 
+    /**
+     * Obtiene la lista mutable de cartas cargadas.
+     *
+     * @return cartas actualmente administradas por el sistema
+     */
     @Override
     public ArrayList<Carta> getCartas() {
         return cartas;
     }
 
+    /**
+     * Agrega una carta a la coleccion y guarda el archivo.
+     *
+     * @param carta carta que se agregara
+     * @return {@code true} si la carta no era nula y se pudo guardar
+     */
     @Override
     public boolean agregarCarta(Carta carta) {
         if (carta == null) {
@@ -67,6 +93,12 @@ public class SistemaImpl implements Sistema {
         return guardarCartas();
     }
 
+    /**
+     * Elimina la carta ubicada en el indice indicado y guarda el archivo.
+     *
+     * @param indice posicion de la carta en la coleccion
+     * @return {@code true} si el indice era valido y se pudo guardar
+     */
     @Override
     public boolean eliminarCarta(int indice) {
         if (!indiceValido(indice)) {
@@ -77,6 +109,13 @@ public class SistemaImpl implements Sistema {
         return guardarCartas();
     }
 
+    /**
+     * Modifica una carta conservando nombre, rareza y tipo.
+     *
+     * @param indice posicion de la carta en la coleccion
+     * @param cartaModificada nueva carta con los atributos especificos
+     * @return {@code true} si la modificacion fue valida y se pudo guardar
+     */
     @Override
     public boolean modificarCarta(int indice, Carta cartaModificada) {
         if (!indiceValido(indice) || cartaModificada == null) {
@@ -92,6 +131,11 @@ public class SistemaImpl implements Sistema {
         return guardarCartas();
     }
 
+    /**
+     * Sobrescribe el archivo de cartas con el contenido actual de la coleccion.
+     *
+     * @return {@code true} si la escritura finalizo correctamente
+     */
     @Override
     public boolean guardarCartas() {
         File file = new File(RUTA_ARCHIVO);
