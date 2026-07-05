@@ -5,7 +5,7 @@ import logic.Sistema;
 import logic.SistemaImpl;
 
 public class Main {
-    public static void main() {
+    public static void main(String[] args) {
         Sistema sistema = SistemaImpl.getInstance();
         MainWindow mainWindow = new MainWindow(sistema);
 

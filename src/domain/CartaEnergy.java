@@ -10,6 +10,14 @@ public class CartaEnergy extends Carta {
         this.elemento = elemento;
     }
 
+    public String getElemento() {
+        return elemento;
+    }
+
+    public void setElemento(String elemento) {
+        this.elemento = elemento;
+    }
+
     @Override
     public double aceptar(CartaVisitor visitor) {
         return visitor.visitar(this);
