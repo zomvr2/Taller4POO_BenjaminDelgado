@@ -8,8 +8,11 @@ import domain.CartaSupporter;
 
 import javax.swing.*;
 import java.awt.*;
+import java.io.File;
 
 public class CardDetailsWindow extends JFrame {
+    private static final String DEFAULT_IMAGE_PATH = "src/files/imagenes/Default.png";
+
     public CardDetailsWindow(Carta carta) {
         setTitle("Detalles de " + carta.getNombre());
         setSize(480, 300);
@@ -17,7 +20,7 @@ public class CardDetailsWindow extends JFrame {
         setLocationRelativeTo(null);
         setLayout(new BorderLayout());
 
-        ImageIcon cardIcon = new ImageIcon(carta.getRutaImagen());
+        ImageIcon cardIcon = new ImageIcon(obtenerRutaImagen(carta));
         Image cardImage = cardIcon.getImage();
         Image scaledCardImage = cardImage.getScaledInstance(150, 205, Image.SCALE_SMOOTH);
 
@@ -89,5 +92,13 @@ public class CardDetailsWindow extends JFrame {
             CartaEnergy energy = (CartaEnergy) carta;
             agregarDetalle(panel, 2, "Elemento", energy.getElemento());
         }
+    }
+
+    private String obtenerRutaImagen(Carta carta) {
+        File imageFile = new File(carta.getRutaImagen());
+        if (imageFile.exists()) {
+            return carta.getRutaImagen();
+        }
+        return DEFAULT_IMAGE_PATH;
     }
 }

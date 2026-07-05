@@ -4,9 +4,12 @@ import domain.Carta;
 
 import javax.swing.*;
 import java.awt.*;
+import java.io.File;
 import java.util.ArrayList;
 
 public class CardGrid extends JPanel {
+    private static final String DEFAULT_IMAGE_PATH = "src/files/imagenes/Default.png";
+
     private final ArrayList<Carta> cartas;
 
     public CardGrid(ArrayList<Carta> cartas) {
@@ -19,7 +22,7 @@ public class CardGrid extends JPanel {
         removeAll();
 
         for (Carta carta : cartas) {
-            ImageIcon cardIcon = new ImageIcon(carta.getRutaImagen());
+            ImageIcon cardIcon = new ImageIcon(obtenerRutaImagen(carta));
             Image cardImage = cardIcon.getImage();
             Image scaledCardImage = cardImage.getScaledInstance(120, 165, Image.SCALE_SMOOTH);
 
@@ -35,5 +38,13 @@ public class CardGrid extends JPanel {
 
         revalidate();
         repaint();
+    }
+
+    private String obtenerRutaImagen(Carta carta) {
+        File imageFile = new File(carta.getRutaImagen());
+        if (imageFile.exists()) {
+            return carta.getRutaImagen();
+        }
+        return DEFAULT_IMAGE_PATH;
     }
 }
