@@ -6,11 +6,13 @@ public abstract class Carta {
     private String nombre;
     private int rareza;
     private String rutaImagen;
+    private String tipo;
 
-    public Carta(String nombre, int rareza) {
+    public Carta(String nombre, int rareza, String tipo) {
         this.nombre = nombre;
         this.rareza = rareza;
         this.rutaImagen = "src/files/imagenes/" + nombre + ".png";
+        this.tipo = tipo;
     }
 
     public String getNombre() {
@@ -23,6 +25,10 @@ public abstract class Carta {
 
     public String getRutaImagen() {
         return rutaImagen;
+    }
+
+    public String getTipo() {
+        return tipo;
     }
 
     public void setNombre(String nombre) {

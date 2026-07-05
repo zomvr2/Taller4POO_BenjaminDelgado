@@ -7,7 +7,7 @@ public class CartaPokemon extends Carta {
     private int cantEnergias;
 
     public CartaPokemon(String nombre, int rareza, int dano, int cantEnergias) {
-        super(nombre, rareza);
+        super(nombre, rareza, "Pokemon");
         this.dano = dano;
         this.cantEnergias = cantEnergias;
     }
